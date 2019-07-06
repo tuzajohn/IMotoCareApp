@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".MainActivity" android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:id="@+id/ActivityBtn"
+        android:weightSum="100"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:layout_height="match_parent"
+            android:text="Select City"
+            android:entries="@array/city_list"
+            android:prompt="@string/city_prompt"
+            android:id="@+id/CityListSpinner"
+            android:outlineSpotShadowColor="@color/colorPrimary"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:id="@+id/ReduceRangeBtn"
+            android:text="-"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/RangeIndicator"
+            android:textAlignment="center"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:id="@+id/IncreaseRangeBtn"
+            android:text="+"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:dividerHeight="0dp"
+        android:layout_weight="90"
+        android:layout_below="@+id/ActivityBtn"
+        android:id="@+id/PersonellList">
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">IMotoCareApp</string>
+    <string name="mechanic">Get a Mechanic</string>
+    <string name="breakdown">Get a Breakdown</string>
+    <string name="city_prompt">Choose a city</string>
+    <string-array name="city_list">
+        <item>Kampala</item>
+        <item>Jinja</item>
+        <item>Masaka</item>
+        <item>Kabale</item>
+        <item>Wandegeya</item>
+    </string-array>
+    <string name="title_activity_indiviual_view">IndiviualViewActivity</string>
+    <string name="title_activity_individual_view">Personel</string>
+    <string name="button_content">My House</string>
+
+</resources>
