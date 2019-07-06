@@ -51,13 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProgressDialog p;
 
     private PersonelAdapter _personelAdapter;
-
+    ArrayList<Personell> _people;
     private String typeEndPoint = "people/type/";
+
+    private PersonelDbContext _conext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        _people = new ArrayList<>();
 
         _intent = getIntent();
         String _type = _intent.getStringExtra("type");
@@ -72,11 +76,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _increaseRangeBtn.setOnClickListener(this);
         _decreaseRange.setOnClickListener(this);
 
+        _personelAdapter = new PersonelAdapter(MainActivity.this, _people);
+
         Log.d("===================", _type);
 
 
         AsyncTaskExample asyncTask=new AsyncTaskExample();
-        asyncTask.execute(typeEndPoint+_type);
+
+
+        _conext = new PersonelDbContext(this);
+
+        //for (Personell _person: _conext.getPeople("54.1","0.34")) {
+        //    _people.add(_person);
+        //}
+
+        //_peopleList.setAdapter(_personelAdapter);
+
+        asyncTask.execute(typeEndPoint + _type);
 
 
         Toast.makeText(this, _type, Toast.LENGTH_LONG ).show();
@@ -151,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     Log.i("==== newObject ++++", obj.toString());
                                     _personelAdapter.add(new Personell(obj));
                                     PersonelDbContext db = new PersonelDbContext(MainActivity.this);
-                                    db.Insert(new Personell(obj));
+                                    //db.Insert(new Personell(obj));
 
 
                                 } catch (JSONException e) {

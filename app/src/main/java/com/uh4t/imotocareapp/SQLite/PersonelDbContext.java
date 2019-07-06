@@ -102,7 +102,6 @@ public class PersonelDbContext extends SQLiteOpenHelper {
         long newRowId = db.insert(FeedEntry.TABLE_NAME, null, values);
 
         String[] allColumns = {
-                BaseColumns._ID,
                 FeedEntry.COLUMN_NAME_PersonId,
                 FeedEntry.COLUMN_NAME_GarageId,
                 FeedEntry.COLUMN_NAME_Fname,
@@ -221,6 +220,7 @@ public class PersonelDbContext extends SQLiteOpenHelper {
     private Personell personellToComment(Cursor cursor) {
 
         Personell _perons = new Personell(
+                cursor.getString(0),
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getString(3),
@@ -229,9 +229,8 @@ public class PersonelDbContext extends SQLiteOpenHelper {
                 cursor.getString(6),
                 cursor.getString(7),
                 cursor.getString(8),
-                cursor.getString(9),
-                cursor.getDouble(10),
-                cursor.getDouble(11)
+                cursor.getDouble(9),
+                cursor.getDouble(10)
         );
 
         return _perons;
