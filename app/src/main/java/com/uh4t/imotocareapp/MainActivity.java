@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Range;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -95,7 +96,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         asyncTask.execute(typeEndPoint + _type);
 
 
-        Toast.makeText(this, _type, Toast.LENGTH_LONG ).show();
+        _peopleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                _intent = new Intent(MainActivity.this, IndividualViewActivity.class);
+                Personell _personell = _personelAdapter.getItem(i);
+                //Toast.makeText(MainActivity.this, _personell.getPersonId(), Toast.LENGTH_LONG).show();
+                _intent.putExtra("personeid", _personell.getPersonId());
+                _intent.putExtra("_personelName", _personell.getFname() + " " + _personell.getLname());
+                _intent.putExtra("_garageName", _personell.getGarageName());
+                _intent.putExtra("_garageAddress", _personell.getAddress());
+                _intent.putExtra("_contact", _personell.getContact());
+                _intent.putExtra("_imgUrl", _personell.getImageUri());
+                startActivity(_intent);
+
+            }
+        });
 
     }
     @Override
