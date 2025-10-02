@@ -11,3 +11,8 @@
 /build
 /captures
 .externalNativeBuild
+# .NET build outputs
+bin/
+obj/
+*.user
+*.vs/

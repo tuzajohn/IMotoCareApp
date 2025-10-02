@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMotoCareApp.Views.HomePage"
+             Title="IMotoCare">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="24">
+            <Label Text="Find trusted help for your motorcycle" 
+                   FontAttributes="Bold"
+                   FontSize="28"
+                   TextColor="{DynamicResource TextPrimaryColor}" />
+            <Label Text="Browse curated mechanics and breakdown specialists near you. Select the type of service you need to start exploring providers." 
+                   FontSize="16"
+                   TextColor="{DynamicResource TextSecondaryColor}" />
+            <Frame BackgroundColor="White"
+                   Padding="20"
+                   CornerRadius="16"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="What kind of help do you need today?" 
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="{DynamicResource TextPrimaryColor}" />
+                    <Button Text="Find Mechanics"
+                            Clicked="OnMechanicClicked"
+                            BackgroundColor="{DynamicResource PrimaryColor}" />
+                    <Button Text="Request Breakdown Support"
+                            Clicked="OnBreakdownClicked"
+                            BackgroundColor="{DynamicResource SecondaryColor}" />
+                </VerticalStackLayout>
+            </Frame>
+            <Border StrokeThickness="1" Stroke="{DynamicResource PrimaryColor}" Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Tip" FontAttributes="Bold" TextColor="{DynamicResource PrimaryColor}" />
+                    <Label Text="You can adjust your search radius on the next screen to discover specialists within a comfortable travel distance." 
+                           TextColor="{DynamicResource TextSecondaryColor}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
