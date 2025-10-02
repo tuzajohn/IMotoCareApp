@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:IMotoCareApp.Models"
+             x:Class="IMotoCareApp.Views.PersonListPage"
+             Title="Specialists">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="0">
+            <VerticalStackLayout Padding="24" Spacing="12">
+                <Label Text="{Binding PageTitle}" FontSize="24" FontAttributes="Bold" />
+                <Label Text="Adjust your search radius to discover more specialists." FontSize="14" TextColor="{DynamicResource TextSecondaryColor}" />
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" Padding="0,12">
+                    <Button Text="-" Command="{Binding DecreaseRangeCommand}" WidthRequest="48" HeightRequest="48" />
+                    <Frame Grid.Column="1" BackgroundColor="White" Padding="16" CornerRadius="12" HasShadow="True">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="{Binding RangeDisplay}" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            <Label Text="Tap + or - to refine" FontSize="12" TextColor="{DynamicResource TextSecondaryColor}" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Button Grid.Column="2" Text="+" Command="{Binding IncreaseRangeCommand}" WidthRequest="48" HeightRequest="48" />
+                </Grid>
+            </VerticalStackLayout>
+            <RefreshView Grid.Row="2" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" Margin="0,12,0,0">
+                <CollectionView ItemsSource="{Binding People}" SelectionMode="Single" SelectionChanged="OnSelectionChanged"
+                                EmptyView="No providers available yet. Pull to refresh or try again later.">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Personell">
+                            <Frame Margin="24,8" Padding="16" CornerRadius="18" HasShadow="True" BackgroundColor="White">
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                                    <Border WidthRequest="72" HeightRequest="72" StrokeThickness="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="18" />
+                                        </Border.StrokeShape>
+                                        <Image Source="{Binding ImageUri}" Aspect="AspectFill" />
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                        <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="18" />
+                                        <Label Text="{Binding GarageName}" FontSize="14" TextColor="{DynamicResource TextSecondaryColor}" />
+                                        <Label Text="{Binding Address}" FontSize="12" TextColor="{DynamicResource TextSecondaryColor}" />
+                                        <Label Text="{Binding DistanceSummary}" FontSize="12" TextColor="{DynamicResource PrimaryColor}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            <ActivityIndicator Grid.Row="3" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Margin="0,12" HorizontalOptions="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
